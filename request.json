@@ -1,0 +1,26 @@
+{
+  "UserId": {
+    "S": "camhashemi@gmail.com"
+  },
+  "maxPrice": {
+    "N": "1600"
+  },
+  "minRooms": {
+    "N": "2"
+  },
+  "after": {
+    "S": "2020-06-01"
+  },
+  "before": {
+    "S": "2020-07-01"
+  },
+  "acceptUnknowns": {
+    "BOOL": false
+  },
+  "destinations": {
+    "S": "Karl-Liebknecht-Str. 29, 10178 Berlin; Potsdamer Platz 5, 10785 Berlin"
+  },
+  "maxTransitTime": {
+    "N": "45"
+  }
+}

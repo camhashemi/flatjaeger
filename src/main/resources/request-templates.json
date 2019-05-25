@@ -1,0 +1,20 @@
+{
+  "TableName": "fj_requests",
+  "Item": {
+    "email": {
+      "S": "$input.path('$.email')"
+    },
+    "maxPrice": {
+      "N": "$input.path('$.maxPrice')"
+    },
+    "minRooms": {
+      "N": "$input.path('$.minRooms')"
+    },
+    "availableAfter": {
+      "S": "$input.path('$.availableAfter')"
+    },
+    "availableBefore": {
+      "S": "$input.path('$.availableBefore')"
+    }
+  }
+}

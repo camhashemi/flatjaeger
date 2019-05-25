@@ -1,0 +1,15 @@
+/.gradle
+/.idea
+/out
+/build
+*.iml
+*.ipr
+*.iws
+notes/
+.env
+ourSearch.env
+DNS_Configuration.csv
+node_modules/
+*.tfstate
+*.tfstate.*
+.terraform

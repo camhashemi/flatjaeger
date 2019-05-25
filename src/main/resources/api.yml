@@ -1,0 +1,81 @@
+openapi: "3.0.3"
+
+info:
+  version: "1.0.0"
+  title: "Flat Jaeger API"
+
+servers:
+  - url: "https://api.flatjaeger.com"
+
+paths:
+  /search/requests:
+    put:
+      operationId: "putSearchRequest"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SearchRequest"
+      responses:
+        200:
+          description: "OK"
+        400:
+          description: "Bad Request"
+      x-amazon-apigateway-integration:
+        credentials: "arn:aws:iam::901791763797:role/service-role/flatjaeger-role-vb8glxqx"
+        uri: "arn:aws:apigateway:eu-central-1:dynamodb:action/PutItem"
+        responses:
+          200:
+            statusCode: "200"
+          400:
+            statusCode: "400"
+        passthroughBehavior: "never"
+        httpMethod: "POST"
+        requestTemplates:
+          application/json: |
+            {
+              "TableName": "fj_requests",
+              "Item": {
+                "UserId": {
+                  "S": "$input.path('$.email')"
+                },
+                "maxPrice": {
+                  "N": "$input.path('$.maxPrice')"
+                },
+                "minRooms": {
+                  "N": "$input.path('$.minRooms')"
+                },
+                "availableAfter": {
+                  "S": "$input.path('$.availableAfter')"
+                },
+                "availableBefore": {
+                  "S": "$input.path('$.availableBefore')"
+                }
+              }
+            }
+        type: "aws"
+
+components:
+  schemas:
+    SearchRequest:
+      type: "object"
+      properties:
+        email:
+          type: "string"
+          format: "email"
+        maxPrice:
+          type: "integer"
+          format: "int32"
+          minimum: 200.0
+          maximum: 4000.0
+        minRooms:
+          type: "integer"
+          format: "int32"
+          minimum: 1.0
+          maximum: 5.0
+        availableAfter:
+          type: "string"
+          format: "date"
+        availableBefore:
+          type: "string"
+          format: "date"

@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Today's Hunt</title>
+    <style type="text/css">
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .flat {
+            width: 80%;
+            padding: 1% 5%;
+            border: 1px solid black;
+            border-radius: 10px;
+        }
+
+        .flat + .flat {
+            margin-top: 10px;
+        }
+
+        .flat td {
+            width: 50%;
+        }
+
+        tbody th {
+            text-align: left;
+        }
+        tbody td {
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+{{#flats}}
+    <div class="flat">
+        <table>
+            <thead>
+            <tr>
+                <th colspan="2">
+                    <a href="{{url}}" target="_blank">{{title}}</a>
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th>
+                    <p>Rooms</p>
+                </th>
+                <td>
+                    <p>{{rooms}}</p>
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    <p>Area</p>
+                </th>
+                <td>
+                    <p>{{area}}</p>
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    <p>Cold Rent</p>
+                </th>
+                <td>
+                    <p>{{coldRent}}</p>
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    <p>Warm Rent</p>
+                </th>
+                <td>
+                    <p>{{warmRent}}</p>
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    <p>Available</p>
+                </th>
+                <td>
+                    <p>{{available}}</p>
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    <p>Address</p>
+                </th>
+                <td>
+                    <a target="_blank" href="https://www.google.com/maps/search/{{address}}">{{address}}</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+{{/flats}}
+</body>
+</html>
+
